@@ -4,14 +4,14 @@ import { IoMdArrowDropdown } from "react-icons/io";
 export default function NavItems() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  function toggleDropdown() {
-    setIsDropdownOpen((prev) => !prev);
-  }
   return (
     <div className=" bg-black text-white mt-4 rounded-md w-full p-4">
       <ul className="flex gap-5 flex-col">
         <li className="flex items-center gap-2 relative">
-          <button onClick={toggleDropdown} className="flex items-center gap-2">
+          <button
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            className="flex items-center gap-2"
+          >
             <span className="">Shop</span>
             <IoMdArrowDropdown />
           </button>

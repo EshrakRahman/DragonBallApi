@@ -7,14 +7,15 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  function toggleMobileMenu() {
-    setIsMobileMenuOpen((prev) => !prev);
-  }
+
   return (
     <section className="px-4 py-4 h-15 ">
       <nav className="mobile-nav flex justify-between items-center">
         <div className="mob-left flex items-center gap-4">
-          <button onClick={toggleMobileMenu} className="div">
+          <button
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className="div"
+          >
             <MdOutlineMenu className="text-2xl" />
           </button>
           <div className="logo">
