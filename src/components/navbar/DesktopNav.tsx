@@ -7,8 +7,9 @@ import SearchInput from "@/components/ui/SearchInput.tsx";
 
 export default function DesktopNav() {
     return (
-        <Container>
-            <section className="px-4 py-4 h-15 hidden lg:block ">
+        <section className="px-4 py-4 hidden lg:block ">
+            <Container>
+
                 <nav className="mobile-nav flex justify-between items-center">
                     <div className="mob-left flex items-center gap-4">
                         <div className="logo">
@@ -54,15 +55,17 @@ export default function DesktopNav() {
                             </ul>
                         </div>
                     </div>
-                    <SearchInput />
+                    <div className="">
+                        <SearchInput />
+                    </div>
 
-                <div className="mob-right flex items-center gap-3">
+                    <div className="mob-right flex items-center gap-3">
                         <FiShoppingCart className="text-2xl" />
                         <CgProfile className="text-2xl" />
                     </div>
                 </nav>
-            </section>
-        </Container>
+            </Container>
+        </section>
 
     )
 }
