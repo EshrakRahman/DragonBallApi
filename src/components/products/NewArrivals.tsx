@@ -14,7 +14,7 @@ export type Product = {
 export default function NewArrivals() {
     const {data} = useSuspenseQuery<Product[]>({
         queryKey: ['product'],
-        queryFn: getNewArrivalsProduct
+        queryFn: getNewArrivalsProduct // need re adjust layout based on data
 
     });
     return (
