@@ -1,8 +1,8 @@
 import ProductCard from "@/components/products/ProductCard.tsx";
 import {useSuspenseQuery} from "@tanstack/react-query";
-import {getNewArrivalsProduct} from "@/api.ts";
+import {getBestSellingProduct,} from "@/api.ts";
 import {Button} from "@/components/ui/button.tsx";
-import {useRef} from "react";
+import { useRef} from "react";
 
 export type Product = {
     id: number;
@@ -14,8 +14,8 @@ export type Product = {
 
 export default function BestSelling() {
     const {data} = useSuspenseQuery<Product[]>({
-        queryKey: ['product', 'best-selling'],
-        queryFn: getNewArrivalsProduct,
+        queryKey: ['best-selling'],
+        queryFn: getBestSellingProduct,
     });
 
     const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -37,7 +37,6 @@ export default function BestSelling() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-center mb-6">
                     <h2 className="font-bold text-3xl lg:text-5xl py-6 text-black">Best Selling</h2>
-
                 </div>
 
                 <div className="relative w-full">
@@ -78,6 +77,7 @@ export default function BestSelling() {
                                     ratings={4.5}
                                     price={product.price}
                                 />
+
                             </div>
                         ))}
                     </div>
