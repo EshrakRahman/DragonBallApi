@@ -12,7 +12,6 @@ export function Ratings({ratings}: Props) {
             <Rating
                 rating={rating}
                 onRatingChange={setRating}
-                editable
             />
             <p className="text-muted-foreground text-sm">
                 <span className="text-foreground font-semibold">
