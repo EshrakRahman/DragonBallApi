@@ -33,8 +33,8 @@ export default function NewArrivals() {
     };
     return (
         <Container>
-            <section className="pl-4 py-8 flex flex-col items-center gap-4">
-                <h2 className="font-bold text-3xl lg:text-5xl py-6 text-black">
+            <section aria-labelledby="new-arrivals-title" className="pl-4 py-8 flex flex-col items-center gap-4">
+                <h2 id="new-arrivals-title" className="font-bold text-3xl lg:text-5xl py-6 text-black">
                     New Arrivals
                 </h2>
 
