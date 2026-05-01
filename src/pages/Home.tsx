@@ -5,6 +5,7 @@ import NewArrivals from "@/components/products/NewArrivals.tsx";
 import BestSelling from "@/components/products/BestSelling.tsx";
 import {Suspense} from "react";
 import ProductSkeleton from "@/components/skeleton/ProductSkeleton.tsx";
+import CtgBrowse from "@/components/products/CtgBrowse.tsx";
 
 export default function Home() {
     return (
@@ -19,6 +20,7 @@ export default function Home() {
             <Suspense fallback={<ProductSkeleton />}>
                 <BestSelling />
             </Suspense>
+            <CtgBrowse />
         </>
     );
 }
