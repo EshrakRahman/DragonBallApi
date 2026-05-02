@@ -17,7 +17,8 @@ export default function Header() {
                                 Browse through our diverse range of meticulously crafted garments, designed to bring out
                                 your individuality and cater to your sense of style.
                             </p>
-                            <Button className='w-full lg:w-fit py-6 rounded-full lg:px-10 hover:bg-background hover:text-black hover:cursor-pointer hover:border-black transition-all duration-300'> Shop Now </Button>
+                            <Button className='w-full lg:w-fit py-6 rounded-full lg:px-10 hover:bg-background hover:text-black hover:cursor-pointer hover:border-black transition-all duration-300'> Shop
+                                                                                                                                                                                                     Now </Button>
                         </div>
                         <div className="stats flex flex-wrap md:flex-nowrap self-center lg:self-start md:items-center py-6 gap-6 justify-center ">
                             <div className="brands w-1/3 md:w-full border-r-2 border-black/10">
@@ -42,8 +43,8 @@ export default function Header() {
                         />
                     </div>
                 </section>
+                <LogoBar />
             </Container>
-            <LogoBar />
         </header>
     )
 }

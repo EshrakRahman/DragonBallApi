@@ -1,4 +1,4 @@
-import {ProductSchema} from "@/schemas/productSchema.ts";
+import {CategorySchema, ProductSchema} from "@/schemas/productSchema.ts";
 import {z} from "zod";
 
 export async function getNewArrivalsProduct() {
@@ -24,4 +24,15 @@ export async function getBestSellingProduct() {
     const data = await res.json();
     return newProductSchema.parse(data);
 
+}
+
+export async function getCategoryData() {
+    const newCategorySchema = z.array(CategorySchema)
+
+    const res = await fetch(
+        `https://api.escuelajs.co/api/v1/categories`
+    );
+
+    const data = await res.json();
+    return newCategorySchema.parse(data);
 }

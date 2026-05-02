@@ -6,6 +6,8 @@ import BestSelling from "@/components/products/BestSelling.tsx";
 import {Suspense} from "react";
 import ProductSkeleton from "@/components/skeleton/ProductSkeleton.tsx";
 import CtgBrowse from "@/components/products/CtgBrowse.tsx";
+import CtgSkeleton from "@/components/skeleton/CtgSkeleton.tsx";
+import ReviewCardContainer from "@/components/reviews/ReviewCardContainer.tsx";
 
 export default function Home() {
     return (
@@ -20,7 +22,10 @@ export default function Home() {
             <Suspense fallback={<ProductSkeleton />}>
                 <BestSelling />
             </Suspense>
-            <CtgBrowse />
+            <Suspense fallback={<CtgSkeleton />}>
+                <CtgBrowse />
+            </Suspense>
+            <ReviewCardContainer />
         </>
     );
 }
