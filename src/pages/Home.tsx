@@ -8,6 +8,9 @@ import ProductSkeleton from "@/components/skeleton/ProductSkeleton.tsx";
 import CtgBrowse from "@/components/products/CtgBrowse.tsx";
 import CtgSkeleton from "@/components/skeleton/CtgSkeleton.tsx";
 import ReviewCardContainer from "@/components/reviews/ReviewCardContainer.tsx";
+import ProductShowcase from "../components/product details/ProductShowcase.tsx";
+import SimilarProducts from "../components/product details/SimilarProducts.tsx";
+import Cart from "@/pages/Cart.tsx";
 
 export default function Home() {
     return (
@@ -26,6 +29,9 @@ export default function Home() {
                 <CtgBrowse />
             </Suspense>
             <ReviewCardContainer />
+            <ProductShowcase />
+            <SimilarProducts />
+            <Cart />
         </>
     );
 }

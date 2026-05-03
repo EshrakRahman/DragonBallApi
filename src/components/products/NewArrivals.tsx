@@ -4,19 +4,10 @@ import {getNewArrivalsProduct,} from "@/api.ts";
 import {Button} from "@/components/ui/button.tsx";
 import Container from "@/components/layout/Container.tsx";
 import {useRef} from "react";
+import type {Product} from "@/types/productsType.ts";
 
 
-export type Product = {
-    id: number;
-    name: string;
-    slug: string;
-    description: string;
-    price: string;    // Changed to string to match API "899.99"
-    quantity?: number;
-    image: string;
-    category?: string | null;
-    createdAt?: string; // API returns string "2026-05-02..."
-};
+
 export default function NewArrivals() {
     const scrollRef = useRef<HTMLDivElement | null>(null);
     const {data} = useSuspenseQuery<Product[]>({

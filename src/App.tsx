@@ -1,9 +1,10 @@
-import Home from "./pages/Home";
+import ProductDetail from "@/pages/ProductDetail.tsx";
 
 export default function App() {
   return (
     <>
-      <Home />
+      {/*<Home />*/}
+        <ProductDetail />
     </>
   );
 }
