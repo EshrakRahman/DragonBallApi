@@ -8,10 +8,14 @@ import {useRef} from "react";
 
 export type Product = {
     id: number;
-    title: string;
-    price: number;
+    name: string;
+    slug: string;
     description: string;
-    images: string[];
+    price: string;    // Changed to string to match API "899.99"
+    quantity?: number;
+    image: string;
+    category?: string | null;
+    createdAt?: string; // API returns string "2026-05-02..."
 };
 export default function NewArrivals() {
     const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -67,8 +71,8 @@ export default function NewArrivals() {
                                 className="min-w-55 shrink-0"
                             >
                                 <ProductCard
-                                    prdImg={product.images[0]}
-                                    title={product.title}
+                                    prdImg={product.image}
+                                    title={product.name}
                                     ratings={4.5}
                                     price={product.price}
                                     discount={false}

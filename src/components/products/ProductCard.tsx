@@ -4,7 +4,7 @@ import {Badge} from "@/components/ui/badge.tsx";
 type Props = {
     title: string;
     ratings: number;
-    price?: number;
+    price?: number | string;
     discountedPrice?: number;
     discount?: number | boolean;
     prdImg?: string;

@@ -1,38 +1,33 @@
-import {CategorySchema, ProductSchema} from "@/schemas/productSchema.ts";
-import {z} from "zod";
+import { CategorySchema, ProductSchema } from "@/schemas/productSchema.ts";
+import { z } from "zod";
 
-export async function getNewArrivalsProduct() {
-    const newProductSchema = z.array(ProductSchema)
-    const res = await fetch(
-        `https://api.escuelajs.co/api/v1/products?offset=0&limit=10
-`
-    );
+/**
+ * Automatically infer TypeScript types from your Zod schemas
+ * to keep your types and validation in sync.
+ */
+type Product = z.infer<typeof ProductSchema>;
+type Category = z.infer<typeof CategorySchema>;
 
-    const data = await res.json();
-    return newProductSchema.parse(data);
+const API_BASE_URL = 'http://ecom-api.test/api/v1';
 
+export async function getNewArrivalsProduct(): Promise<Product[]> {
+    const res = await fetch(`${API_BASE_URL}/products`);
+    const json = await res.json();
+
+    // Pass json.data to Zod because Laravel wraps the array in a 'data' key
+    return z.array(ProductSchema).parse(json.data);
 }
 
+export async function getBestSellingProduct(): Promise<Product[]> {
+    const res = await fetch(`${API_BASE_URL}/products`);
+    const json = await res.json();
 
-export async function getBestSellingProduct() {
-    const newProductSchema = z.array(ProductSchema)
-    const res = await fetch(
-        `https://api.escuelajs.co/api/v1/products?offset=10&limit=10
-`
-    );
-
-    const data = await res.json();
-    return newProductSchema.parse(data);
-
+    return z.array(ProductSchema).parse(json.data);
 }
 
-export async function getCategoryData() {
-    const newCategorySchema = z.array(CategorySchema)
+export async function getCategoryData(): Promise<Category[]> {
+    const res = await fetch(`${API_BASE_URL}/categories`);
+    const json = await res.json();
 
-    const res = await fetch(
-        `https://api.escuelajs.co/api/v1/categories`
-    );
-
-    const data = await res.json();
-    return newCategorySchema.parse(data);
+    return z.array(CategorySchema).parse(json.data);
 }

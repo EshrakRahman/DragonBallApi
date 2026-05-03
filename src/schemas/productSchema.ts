@@ -4,15 +4,17 @@ export const CategorySchema = z.object({
     id: z.number(),
     name: z.string(),
     slug: z.string(),
-    image: z.string().url(),
+    description: z.string(),
+    created_at: z.string(),
 });
-
 export const ProductSchema = z.object({
     id: z.number(),
-    title: z.string(),
+    name: z.string(),
     slug: z.string(),
-    price: z.number(),
     description: z.string(),
-    images: z.array(z.string().url()),
-    category: CategorySchema,
+    price: z.string(), // Matches "899.99"
+    quantity: z.number(),
+    image: z.string().url(),
+    category: z.string().optional().nullable(),
+    created_at: z.string(),
 });
