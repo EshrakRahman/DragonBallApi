@@ -1,17 +1,19 @@
 import {Ratings} from "@/components/products/Ratings.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
+import { Link } from "@tanstack/react-router";
 
 type Props = {
     title: string;
     ratings: number;
+    slug: string;
     price?: number | string;
     discountedPrice?: number;
     discount?: number | boolean;
     prdImg?: string;
 }
-export default function ProductCard({title, ratings, price, discount, discountedPrice, prdImg}: Props) {
+export default function ProductCard({title, ratings, slug, price, discount, discountedPrice, prdImg}: Props) {
     return (
-        <>
+        <Link to="/products/$slug" params={{ slug }} className="block w-50">
             <section className="w-50">
                 <div className="product-img rounded-2xl w-50 h-50 bg-[#F0EEED] p-4">
                     <img
@@ -24,7 +26,7 @@ export default function ProductCard({title, ratings, price, discount, discounted
                     <p className="text-black font-primary font-bold">{title}</p>
                     <Ratings ratings={ratings} />
                     <div className="flex items-center gap-2 ">
-                        <p className="font-bold text-black text-lg§">
+                        <p className="font-bold text-black text-lg">
                             ${price ?? 0}
                         </p>
                         {discountedPrice && (
@@ -37,6 +39,6 @@ export default function ProductCard({title, ratings, price, discount, discounted
                     </div>
                 </div>
             </section>
-        </>
+        </Link>
     )
 }

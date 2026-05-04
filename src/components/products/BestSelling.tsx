@@ -1,15 +1,13 @@
 import ProductCard from "@/components/products/ProductCard.tsx";
 import {useSuspenseQuery} from "@tanstack/react-query";
-import {getBestSellingProduct,} from "@/api.ts";
+import {getProducts} from "@/api/products.ts";
 import {Button} from "@/components/ui/button.tsx";
 import { useRef} from "react";
-import type {Product} from "@/types/productsType.ts";
-
 
 export default function BestSelling() {
-    const {data} = useSuspenseQuery<Product[]>({
+    const {data} = useSuspenseQuery({
         queryKey: ['best-selling'],
-        queryFn: getBestSellingProduct,
+        queryFn: () => getProducts({ featured: true }),
     });
 
     const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -66,7 +64,8 @@ export default function BestSelling() {
                                 className="min-w-55 shrink-0"
                             >
                                 <ProductCard
-                                    prdImg={product.image}
+                                    slug={product.slug}
+                                    prdImg={product.image ?? undefined}
                                     title={product.name}
                                     ratings={4.5}
                                     price={product.price}
@@ -99,7 +98,7 @@ export default function BestSelling() {
                     </button>
                 </div>
                 <div className="flex justify-center py-8">
-                    <Button className="px-8 py-4 rounded-full bg-background border-gray-400  mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
+                    <Button className="px-8 py-4 rounded-full bg-background border-gray-400 mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
                         View All
                     </Button>
                 </div>

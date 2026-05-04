@@ -1,0 +1,23 @@
+import { createRouter } from "@tanstack/react-router";
+import { rootRoute } from "@/routes/root.tsx";
+import { homeRoute } from "@/routes/home.tsx";
+import { productRoute } from "@/routes/product.tsx";
+import { categoryRoute } from "@/routes/category.tsx";
+import { cartRoute } from "@/routes/cart.tsx";
+import { checkoutRoute } from "@/routes/checkout.tsx";
+import { wishlistRoute } from "@/routes/wishlist.tsx";
+import { orderSuccessRoute } from "@/routes/order-success.tsx";
+import { loginRoute } from "@/routes/login.tsx";
+
+const routeTree = rootRoute.addChildren([
+  homeRoute,
+  productRoute,
+  categoryRoute,
+  cartRoute,
+  checkoutRoute,
+  wishlistRoute,
+  orderSuccessRoute,
+  loginRoute,
+]);
+
+export const router = createRouter({ routeTree });

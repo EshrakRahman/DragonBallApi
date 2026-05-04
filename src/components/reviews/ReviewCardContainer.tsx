@@ -1,6 +1,5 @@
 import ReviewCard from "@/components/reviews/ReviewCard.tsx";
 import Container from "@/components/layout/Container.tsx";
-import {Button} from "@/components/ui/button.tsx";
 export default function ReviewCardContainer() {
     return (
         <>
@@ -17,9 +16,9 @@ export default function ReviewCardContainer() {
                     <ReviewCard />
                 </section>
 
-                <Button className="px-8 py-4 mt-6 rounded-full bg-background border-gray-400 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
-                    View All
-                </Button>
+                {/*<Button className="px-8 py-4 mt-6 rounded-full bg-background border-gray-400 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">*/}
+                {/*    View All*/}
+                {/*</Button>*/}
             </Container>
         </>
 

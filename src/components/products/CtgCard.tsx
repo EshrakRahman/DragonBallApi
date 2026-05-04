@@ -1,14 +1,16 @@
 import ModelImg from '@/assets/model.png';
 import {clsx} from "clsx";
+import { Link } from "@tanstack/react-router";
 
 type Props = {
     className: string;
     title: string;
+    slug: string;
 }
-export default function CtgCard({className, title}: Props) {
+export default function CtgCard({className, title, slug}: Props) {
     return(
-        <>
-            <section className={clsx("ctg-card  bg-yellow-600 rounded-xl relative w-full lg:h-73 h-48  overflow-hidden", className)}>
+        <Link to="/categories/$slug" params={{ slug }} className={clsx("block", className)}>
+            <section className="ctg-card bg-yellow-600 rounded-xl relative w-full lg:h-73 h-48 overflow-hidden">
                 <div className="card  flex py-8">
                     <div className="left w-1/3 px-6">
                         <h3 className="font-primary font-bold text-2xl text-black">{title}</h3>
@@ -21,6 +23,6 @@ export default function CtgCard({className, title}: Props) {
                     </div>
                 </div>
             </section>
-        </>
+        </Link>
     )
 }

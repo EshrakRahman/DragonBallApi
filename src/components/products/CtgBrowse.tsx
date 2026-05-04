@@ -1,18 +1,18 @@
 import Container from "@/components/layout/Container.tsx";
 import CtgCard from "@/components/products/CtgCard.tsx";
 import {useSuspenseQuery} from "@tanstack/react-query";
-import {getCategoryData} from "@/api.ts";
+import {getCategories} from "@/api/categories.ts";
 
 export default function CtgBrowse() {
     const spans = [
-        "lg:col-span-5", // Index 0
-        "lg:col-span-7", // Index 1
-        "lg:col-span-7", // Index 2
-        "lg:col-span-5"  // Index 3
+        "lg:col-span-5",
+        "lg:col-span-7",
+        "lg:col-span-7",
+        "lg:col-span-5"
     ];
     const {data} = useSuspenseQuery({
-        queryKey: ['category'],
-        queryFn: getCategoryData
+        queryKey: ['categories'],
+        queryFn: getCategories,
     })
     return (
         <Container>
@@ -25,6 +25,7 @@ export default function CtgBrowse() {
                         <CtgCard
                             className={spans[index]}
                             title={category.name}
+                            slug={category.slug}
                             key={category.id}
                         />
                     ))}
