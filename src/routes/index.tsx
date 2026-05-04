@@ -8,6 +8,8 @@ import { checkoutRoute } from "@/routes/checkout.tsx";
 import { wishlistRoute } from "@/routes/wishlist.tsx";
 import { orderSuccessRoute } from "@/routes/order-success.tsx";
 import { loginRoute } from "@/routes/login.tsx";
+import { ordersRoute } from "@/routes/orders.tsx";
+import { newArrivalsRoute } from "@/routes/new-arrivals.tsx";
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
@@ -18,6 +20,8 @@ const routeTree = rootRoute.addChildren([
   wishlistRoute,
   orderSuccessRoute,
   loginRoute,
+  ordersRoute,
+  newArrivalsRoute,
 ]);
 
 export const router = createRouter({ routeTree });

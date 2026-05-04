@@ -3,13 +3,14 @@ import {useSuspenseQuery} from "@tanstack/react-query";
 import {getProducts} from "@/api/products.ts";
 import {Button} from "@/components/ui/button.tsx";
 import Container from "@/components/layout/Container.tsx";
+import { Link } from "@tanstack/react-router";
 import {useRef} from "react";
 
 export default function NewArrivals() {
     const scrollRef = useRef<HTMLDivElement | null>(null);
     const {data} = useSuspenseQuery({
         queryKey: ['products', 'latest'],
-        queryFn: () => getProducts({ sort: 'latest' }),
+        queryFn: () => getProducts({ sort: 'latest', limit: 10 }),
     });
 
     const scrollLeft = () => {
@@ -93,9 +94,11 @@ export default function NewArrivals() {
                     </button>
                 </div>
 
-                <Button className="px-8 py-4 rounded-full bg-background border-gray-400 mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
-                    View All
-                </Button>
+                <Link to="/new-arrivals">
+                    <Button className="px-8 py-4 rounded-full bg-background border-gray-400 mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
+                        View All
+                    </Button>
+                </Link>
             </section>
         </Container>
     )

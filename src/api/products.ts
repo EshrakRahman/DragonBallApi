@@ -3,13 +3,15 @@ import { apiFetch } from "@/api/client.ts";
 import { z } from "zod";
 
 export async function getProducts(
-  params?: { search?: string; category?: string; sort?: string; featured?: boolean }
+  params?: { search?: string; category?: string; sort?: string; featured?: boolean; limit?: number; page?: number }
 ) {
   const query = new URLSearchParams();
   if (params?.search) query.set("search", params.search);
   if (params?.category) query.set("category", params.category);
   if (params?.sort) query.set("sort", params.sort);
   if (params?.featured) query.set("featured", "true");
+  if (params?.limit) query.set("limit", String(params.limit));
+  if (params?.page) query.set("page", String(params.page));
   const qs = query.toString();
   const path = qs ? `/v1/products?${qs}` : "/v1/products";
   const raw = await apiFetch<{ data: unknown }>(path);

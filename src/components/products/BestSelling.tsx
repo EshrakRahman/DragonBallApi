@@ -2,6 +2,7 @@ import ProductCard from "@/components/products/ProductCard.tsx";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {getProducts} from "@/api/products.ts";
 import {Button} from "@/components/ui/button.tsx";
+import { Link } from "@tanstack/react-router";
 import { useRef} from "react";
 
 export default function BestSelling() {
@@ -98,9 +99,11 @@ export default function BestSelling() {
                     </button>
                 </div>
                 <div className="flex justify-center py-8">
-                    <Button className="px-8 py-4 rounded-full bg-background border-gray-400 mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
-                        View All
-                    </Button>
+                    <Link to="/categories/all">
+                        <Button className="px-8 py-4 rounded-full bg-background border-gray-400 mt-6 text-black/50 hover:text-black hover:border-black/90 hover:cursor-pointer transition-all duration-300">
+                            View All
+                        </Button>
+                    </Link>
                 </div>
             </div>
 
