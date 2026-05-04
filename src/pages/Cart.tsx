@@ -28,7 +28,7 @@ export default function Cart() {
               ) : (
                 items.map((item) => (
                   <div key={item.product_id + (item.size_id ? '-' + item.size_id : '')} className="flex gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                    <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                    <div className="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-gray-100">
                       <img src={item.image} alt={item.product_name} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 flex flex-col justify-between">

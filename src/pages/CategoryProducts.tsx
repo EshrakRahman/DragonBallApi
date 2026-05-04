@@ -8,12 +8,17 @@ export default function CategoryProducts() {
   const { slug } = useParams({ from: "/categories/$slug" });
   const { q } = useSearch({ from: "/categories/$slug" });
 
-  const queryKey = q ? ["products", "search", q] : ["products", "category", slug];
-  const queryFn = q
-    ? () => getProducts({ search: q, sort: "latest" })
-    : slug !== "all"
-    ? () => getProducts({ category: slug })
-    : () => getProducts();
+
+  const queryKey = ["products", { q, slug, sort: "latest" }];
+
+  const queryFn = () => {
+
+    if (q) return getProducts({ search: q, sort: "latest" });
+
+    if (slug && slug !== "all") return getProducts({ category: slug });
+
+    return getProducts();
+  };
 
   const { data: products, isLoading } = useQuery({ queryKey, queryFn });
 
@@ -34,7 +39,7 @@ export default function CategoryProducts() {
         </div>
 
         <div className="flex gap-8">
-          <aside className="hidden lg:block w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-64 shrink-0">
             <div className="sticky top-4 space-y-6">
               <div>
                 <h3 className="font-semibold mb-3">Category</h3>
@@ -103,7 +108,7 @@ export default function CategoryProducts() {
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                {products.map((product) => {
+                {products?.map((product) => {
                   const hasDiscount =
                     product.compare_price != null &&
                     product.compare_price > product.price;
