@@ -12,7 +12,6 @@ type Props = { product: Product };
 export default function ProductShowcase({ product }: Props) {
   const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
-
   const handleAddToCart = (quantity: number) => {
     addItem({
       product_id: product.id,

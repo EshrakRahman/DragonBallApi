@@ -8,6 +8,7 @@ export default function ProductDetail() {
     const { data: product, isLoading, error } = useQuery({
         queryKey: ['product', slug],
         queryFn: () => getProductBySlug(slug),
+        enabled: !!slug,
     });
 
     if (isLoading) {

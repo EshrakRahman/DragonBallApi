@@ -9,7 +9,9 @@ export default function Cart() {
   const subtotal = preview
     ? preview.subtotal
     : items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
   const shipping = subtotal > 500 ? 0 : 15;
+
   const total = preview ? preview.total : subtotal + shipping;
 
   return (

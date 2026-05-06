@@ -1,5 +1,4 @@
-const API_BASE = "http://ecom-api.test/api";
-
+const API_BASE ='http://ecom-api.test/api';
 export class ApiError extends Error {
   status: number;
   errors?: Record<string, string[]>;

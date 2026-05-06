@@ -3,7 +3,7 @@ import { z } from "zod";
 export const SizeSchema = z.object({
   id: z.number(),
   name: z.string(),
-  additional_price: z.number(),
+  additional_price: z.number().optional(),
   stock: z.number(),
 });
 
@@ -86,9 +86,25 @@ export const OrderSchema = z.object({
   created_at: z.string(),
 });
 
+export const PlaceOrderItemSchema = z.object({
+  product_id: z.number(),
+  size_id: z.number().nullable().optional(),
+  quantity: z.number(),
+})
+
+export const PlaceOrderPayloadSchema = z.object({
+  items: z.array(PlaceOrderItemSchema),
+  shipping_address: AddressSchema,
+  billing_address: AddressSchema.nullable().optional(),
+  notes: z.string().nullable().optional(),
+})
+
 export type Product = z.infer<typeof ProductSchema>;
 export type Category = z.infer<typeof CategorySchema>;
 export type Size = z.infer<typeof SizeSchema>;
 export type CartPreviewItem = z.infer<typeof CartPreviewItemSchema>;
 export type CartPreviewResponse = z.infer<typeof CartPreviewResponseSchema>;
 export type Order = z.infer<typeof OrderSchema>;
+export type PlaceOrderPayload = z.infer<typeof PlaceOrderPayloadSchema>;
+export type PlaceOrderItem = z.infer<typeof PlaceOrderItemSchema>;
+
