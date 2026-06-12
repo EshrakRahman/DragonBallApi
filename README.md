@@ -28,7 +28,7 @@ A modern, type-safe e-commerce frontend built with React 19 and TypeScript. NexC
 ### 🔐 Authentication
 - JWT-based login, registration, and logout
 - Persistent sessions via `localStorage`
-- Protected routes and features (wishlist, orders, checkout)
+- Protected routes and features (wishlist, orders)
 
 ### 🛒 Shopping Cart
 - Local-first cart with `localStorage` persistence
