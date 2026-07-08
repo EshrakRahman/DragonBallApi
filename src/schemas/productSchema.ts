@@ -128,6 +128,12 @@ export const ReviewSchema = z.object({
   body: z.string(),
   is_approved: z.boolean().nullable().optional(),
   created_at: z.string(),
+  product: z.object({
+    id: z.number(),
+    name: z.string(),
+    slug: z.string(),
+    image: z.string().nullable().optional(),
+  }).nullable().optional(),
 });
 
 export const ProductReviewsResponseSchema = z.object({
