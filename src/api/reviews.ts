@@ -29,12 +29,12 @@ export async function getFeaturedReviews(limit = 6): Promise<Review[]> {
   try {
     const data = await apiFetch<unknown>(`/v1/reviews/featured?limit=${limit}`);
     const rawList = data && typeof data === "object" && "data" in data ? (data as { data: unknown[] }).data : data;
-    if (Array.isArray(rawList)) {
+    if (Array.isArray(rawList) && rawList.length > 0) {
       return z.array(ReviewSchema).parse(rawList);
     }
-    throw new Error("Invalid reviews data structure");
+    throw new Error("Empty or invalid reviews list");
   } catch (error) {
-    console.warn("Could not find api route /v1/reviews/featured or call failed. Using dummy reviews.", error);
+    console.warn("Could not find api route /v1/reviews/featured, call failed, or returned empty list. Using dummy reviews.", error);
     return [
       {
         id: 1,
